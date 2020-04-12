@@ -1,0 +1,70 @@
+{
+  "name": "shopnx",
+  "version": "1.1.0",
+  "description": "ShopNx AngularJS Full Stack Shopping Cart Application",
+  "keywords": [
+    "CodeNx",
+    "Node.js",
+    "application",
+    "AngularJS",
+    "Express",
+    "Mean",
+    "MongoDB",
+    "Shopping Cart",
+    "Single Page Web App"
+  ],
+  "author": "",
+  "scripts": {
+    "start": "nodemon start"
+  },
+
+  "main": "app.js",
+  "dependencies": {
+    "async": "^1.4.2",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.5.2",
+    "coffee-script": "^1.10.0",
+    "composable-middleware": "^0.3.0",
+    "compression": "~1.0.1",
+    "connect-mongo": "^0.8.1",
+    "cookie-parser": "~1.0.1",
+    "cors": "^2.8.5",
+    "crypto": "^1.0.1",
+    "ejs": "~0.8.4",
+    "errorhandler": "~1.0.0",
+    "express": "~4.9.0",
+    "express-jwt": "^3.1.0",
+    "express-session": "~1.0.2",
+    "grunt-legacy-log": "^0.1.2",
+    "grunt-legacy-util": "^0.2.0",
+    "jsonwebtoken": "^5.0.0",
+    "lodash": "~2.4.1",
+    "method-override": "~1.0.0",
+    "mongoose": "~4.0.3",
+    "morgan": "~1.0.0",
+    "mosca": "^2.8.3",
+    "mqtt": "^2.18.8",
+    "passport": "~0.2.0",
+    "passport-facebook": "latest",
+    "passport-google-oauth": "latest",
+    "passport-local": "~0.1.6",
+    "passport-twitter": "latest",
+    "pbkdf2": "^3.0.17",
+    "serve-favicon": "~2.0.1",
+    "shortid": "^2.2.2",
+    "socket.io": "^1.0.6",
+    "socket.io-client": "^1.0.6",
+    "socketio-jwt": "^3.0.0"
+  },
+  "engines": {
+    "node" : "10.15.0"
+  },
+  "devDependencies": {
+    "grunt-open": "~0.2.3",
+    "open": "~0.0.4",
+    "connect-livereload": "~0.4.0",
+    "requirejs": "~2.1.11",
+    "supertest": "~0.11.0",
+    "should": "~3.3.1"
+  }
+}
