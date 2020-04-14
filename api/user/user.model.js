@@ -8,14 +8,11 @@ var authTypes = ['github', 'twitter', 'facebook', 'google'];
 //const bcrypt = require('bcryptjs');
 
 var UserSchema = new Schema({
-  name: String,
+  fname: String,
+  lname : String,
   email: { type: String, lowercase: true },
-  role: {
-    type: String,
-    default: 'doctor'
-  },
+  role:  String,
   hashedPassword: String,
-  phoneno : String,
   provider: String,
   salt: String,
   facebook: {},

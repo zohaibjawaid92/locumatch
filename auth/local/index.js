@@ -18,6 +18,7 @@ router.post('/', function(req, res, next) {
       _id : user._id,
       name : user.name,
       email : user.email,
+      role : user.role,
     });
   })(req, res, next)
 });

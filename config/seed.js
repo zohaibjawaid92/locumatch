@@ -13,26 +13,26 @@ User.find(function (err, data) {
   if(data.length < 1){
     User.create({
       provider: 'local',
-      name: 'Test User',
+      fname: 'Test ',
+      lname : "User",
       email: 'doctor@doctor.com',
       password: 'doctor',
-      phoneno : +921 + "-" + 1234567
     },
     {
       provider: 'local',
       role: 'hospital',
-      name: 'Admin',
+      fname: 'Mahruf',
+      lname : "Khan",
       email: 'hospital@locumatch.com',
       password: 'hospital',
-      phoneno : +921 + "-" + 1234567
     }, 
     {
       provider: 'local',
       role: 'admin',
-      name: 'Admin',
+      fname: 'Admin',
+      lname : "Zohaib",
       email: 'admin@admin.com',
       password: 'admin',
-      phoneno : +921 + "-" + 1234567
     }, function() {
         console.log('finished populating users');
     });
