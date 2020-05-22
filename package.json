@@ -14,10 +14,6 @@
     "Single Page Web App"
   ],
   "author": "",
-  "scripts": {
-    "start": "nodemon start"
-  },
-
   "main": "app.js",
   "dependencies": {
     "async": "^1.4.2",
@@ -43,7 +39,6 @@
     "mongoose": "~4.0.3",
     "morgan": "~1.0.0",
     "mosca": "^2.8.3",
-    "mqtt": "^2.18.8",
     "passport": "~0.2.0",
     "passport-facebook": "latest",
     "passport-google-oauth": "latest",
@@ -55,9 +50,6 @@
     "socket.io": "^1.0.6",
     "socket.io-client": "^1.0.6",
     "socketio-jwt": "^3.0.0"
-  },
-  "engines": {
-    "node" : "10.15.0"
   },
   "devDependencies": {
     "grunt-open": "~0.2.3",
