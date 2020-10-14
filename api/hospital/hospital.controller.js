@@ -1,7 +1,8 @@
 'use strict';
 
 var _ = require('lodash');
-var Doctor = require('./doctors.model');
+var Hospital = require('./hospital.model');
+var Doctor = require('../doctors/doctors.model');
 
 // Get list of dashboards
 exports.index = function(req, res) {
@@ -12,27 +13,29 @@ exports.index = function(req, res) {
 };
 
 // Get a single dashboard
-exports.show = function(req, res) {
-  Dashboard.findById(req.params.id, function (err, dashboard) {
+exports.show = function(req, res , next) {
+  console.log(req.body);
+  Doctor.findOne({'speciality' : req.body.speciality}, {'state' : req.body.state} , function(err, opportunities) {
+    console.log(opportunities);
     if(err) { return handleError(res, err); }
-    if(!dashboard) { return res.status(404).send('Not Found'); }
-    return res.json(dashboard);
+    if(!opportunities) { return res.status(404).send('Not Found'); }
+    return res.send(opportunities);
   });
 };
 
 // Creates a new dashboard in the DB.
 exports.create = function(req, res) {
-  console.log(req.body);
-  Doctor.create(req.body, function(err, doctrosData) {
+  console.log('recieve from hospital' , req.body);
+  Hospital.create(req.body, function(err, hospital) {
     if(err) { return handleError(res, err); }
-    return res.status(201).json(doctrosData);
+    return res.status(201).json(hospital);
   });
 };
 
 // Updates an existing dashboard in the DB.
 exports.update = function(req, res) {
   if(req.body._id) { delete req.body._id; }
-  Dashboard.findById(req.params.id, function (err, dashboard) {
+  hospitalProfile.findById(req.params.id, function (err, dashboard) {
     if (err) { return handleError(res, err); }
     if(!dashboard) { return res.status(404).send('Not Found'); }
     var updated = _.extend(dashboard, req.body);
@@ -45,7 +48,7 @@ exports.update = function(req, res) {
 
 // Deletes a dashboard from the DB.
 exports.destroy = function(req, res) {
-  Dashboard.findById(req.params.id, function (err, dashboard) {
+  hospitalProfile.findById(req.params.id, function (err, dashboard) {
     if(err) { return handleError(res, err); }
     if(!dashboard) { return res.status(404).send('Not Found'); }
     dashboard.remove(function(err) {

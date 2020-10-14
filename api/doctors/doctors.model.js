@@ -3,19 +3,22 @@
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
-var DashboardSchema = new Schema({
-
-  state: String,
+var Doctor = new Schema({
+  fname : String,
+  lname : String,
+  email : String,
+  role : String,
+  state : String,
   city: String,
   Region: String,
-  Zip: Number, 
+  zip: String, 
   profileImage: String,
   licenseType : String,
-  Speciality: String, 
-  yearsOfExperience: Number ,
+  speciality: String, 
+  yearsOfExperience: String ,
   medSchoolName: String,
-  Date: String ,
-  Fellowship: String ,
+  date: String ,
+  fellowship: String ,
   doctorDetails: String,
   npiNumber: String,
   license: String,
@@ -24,4 +27,4 @@ var DashboardSchema = new Schema({
   hospitalAffilations: String
 });
 
-module.exports = mongoose.model('Doctors', DashboardSchema);
+module.exports = mongoose.model('Doctor', Doctor);
