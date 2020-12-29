@@ -25,14 +25,23 @@ if(config.seedDB) { require('./config/seed'); }
 // Setup server
 var app = express();
 var server = require('http').createServer(app);
-var socketio = require('socket.io')(server, {
-  serveClient: config.env !== 'production',
-  path: '/socket.io-client'
-});
+var socketio = require('socket.io')(server);
+// var socketio = require('socket.io')(server, {
+//   serveClient: config.env !== 'production',
+//   path: '/socket.io-client'
+// });
 require('./config/socketio')(socketio);
 require('./config/express')(app);
 require('./routes')(app);
 
+
+socketio.on('connection', (socket) => {
+  console.log('a user connected');
+  socket.on('message', (msg) => {
+    console.log(msg);
+    socket.broadcast.emit('message-broadcast', msg);
+   });
+});
 
 // Start server
 server.listen(config.port, config.ip, function () {

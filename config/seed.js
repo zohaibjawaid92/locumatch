@@ -32,7 +32,7 @@ User.find(function (err, data) {
       fname: 'Admin',
       lname : "Zohaib",
       email: 'admin@admin.com',
-      password: 'admin',
+      password: '12345678',
     }, function() {
         console.log('finished populating users');
     });

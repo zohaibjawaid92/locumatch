@@ -16,7 +16,8 @@ router.post('/', function(req, res, next) {
     res.json({
       token: token,
       _id : user._id,
-      name : user.name,
+      fname : user.fname,
+      lname : user.lname,
       email : user.email,
       role : user.role,
     });

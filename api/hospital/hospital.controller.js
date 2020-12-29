@@ -3,6 +3,8 @@
 var _ = require('lodash');
 var Hospital = require('./hospital.model');
 var Doctor = require('../doctors/doctors.model');
+var AddFavourite = require('./models/AddFavourite.model');
+var AddContract = require('./models/AddContract.model');
 
 // Get list of dashboards
 exports.index = function(req, res) {
@@ -12,16 +14,65 @@ exports.index = function(req, res) {
   });
 };
 
+
+exports.getallcontract = function(req , res){
+  AddContract.find({hospitalId : req.params.id}, function(err , result){
+    if(err) { return handleError(res , err); }
+    if(!result) { return res.status(404).send('Not Found'); }
+    res.json(result);
+  })
+}
+
+
+// Get Hospital Profile
+exports.getHospitalProfileRecord = function(req, res) {
+  Hospital.find({email : req.body.email}, function(err , result){
+    if(err) { return handleError(res , err); }
+    if(!result) { return res.status(404).send('Not Found'); }
+    res.json(result);
+  })
+};
+
+//Allergy_and_Immunology
+
 // Get a single dashboard
 exports.show = function(req, res , next) {
   console.log(req.body);
-  Doctor.findOne({'speciality' : req.body.speciality}, {'state' : req.body.state} , function(err, opportunities) {
-    console.log(opportunities);
+  Doctor.find({'speciality' : req.body.speciality,'state' : req.body.state} , function(err, opportunities) {
+    // console.log(opportunities);
     if(err) { return handleError(res, err); }
     if(!opportunities) { return res.status(404).send('Not Found'); }
-    return res.send(opportunities);
+    res.json(opportunities);
   });
 };
+
+exports.doctorprofile = function(req , res , next) {
+  console.log(req.params);
+  Doctor.findById(req.params.id , function(err , result){
+    if(err) { return handleError(res , err); }
+    if(!result) { return res.status(404).send('Not Found'); }
+    res.json(result);
+  })
+}
+
+// Add Favourite
+exports.favourite = function(req, res) {
+  console.log('recieve from hospital' , req.body);
+  AddFavourite.create(req.body, function(err, hospital) {
+    if(err) { return handleError(res, err); }
+    return res.status(201).json(hospital);
+  });
+};
+
+//Add Contract
+exports.addcontract = function(req, res) {
+  console.log('recieve from hospital' , req.body);
+  AddContract.create(req.body, function(err, hospital) {
+    if(err) { return handleError(res, err); }
+    return res.status(201).json(hospital);
+  });
+};
+
 
 // Creates a new dashboard in the DB.
 exports.create = function(req, res) {

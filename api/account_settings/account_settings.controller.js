@@ -1,7 +1,7 @@
 'use strict';
 
 var _ = require('lodash');
-var Devices = require('./devices.module');
+var account_settings = require('./account_settings.module');
 
 // Get list of dashboards
 exports.index = function(req, res) {
@@ -23,11 +23,11 @@ exports.show = function(req, res) {
 
 // Creates a new dashboard in the DB.
 exports.create = function(req, res) {
-    Devices.create(req.body, function(err, farm) {
+    account_settings.create(req.body, function(err, results) {
     if(err) { return handleError(res, err); }
     return res.status(201).json({
-        farm : farm,
-        message : 'Slave Added Successfully!!'
+        results : results,
+        message : 'Account Details Added Successsfully!'
     });
   });
 };
