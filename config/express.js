@@ -22,6 +22,9 @@ var cors = require('cors');
 
 module.exports = function(app) {
   var env = app.get('env');
+  app.get('/favicon.ico', function(req, res) {
+    res.send(204);
+});
 
   app.set('views', config.root + '/server/views');
   app.engine('html', require('ejs').renderFile);
@@ -47,7 +50,7 @@ module.exports = function(app) {
   }));
   
   if ('production' === env) {
-    app.use(favicon(path.join(config.root, 'public', 'favicon.ico')));
+    // app.use(favicon(path.join(config.root, 'public', 'favicon.ico')));
     app.use(express.static(path.join(config.root, 'public')));
     app.set('appPath', path.join(config.root, 'public'));
     app.use(morgan('dev'));

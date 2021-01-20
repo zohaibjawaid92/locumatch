@@ -2,7 +2,6 @@
 
 var _ = require('lodash');
 var Devices = require('./devices.module');
-var mqttSubscriber = require('../../mqtt/subscriber');
 
 // Get list of dashboards
 exports.index = function(req, res) {
