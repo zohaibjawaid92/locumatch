@@ -16,7 +16,7 @@ module.exports = {
   // MongoDB connection options
   mongo: {
     uri:    process.env.OPENSHIFT_MONGODB_DB_URL ||
-            'mongodb://zohaib:zobi12323@ds117681.mlab.com:17681/locumatch'
+            'mongodb+srv://zobi12323:zobi12323@cluster0.a5ikg.mongodb.net/Locumatch?retryWrites=true&w=majority'
   },
 
   seedDB: true
