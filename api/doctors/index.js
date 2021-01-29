@@ -12,7 +12,8 @@ router.post('/doctorAccDetailsExists/:id', controller.checkdoctoraccdetails);
 router.post('/createDoctorsContracts' , controller.createdoctorcontract);
 router.post('/getAlldataContracts/:id' , controller.getallcontracts);
 router.post('/getContractsDataByUser/:id' , controller.getapprovedcontractsbydoctor);
-router.post('/getDoctorProfileRecord' , controller.getDoctorProfileRecord)
+router.post('/getDoctorProfileRecord' , controller.getDoctorProfileRecord);
+router.post('/doctorContractUpdateByHospital/:id', controller.doctorContractUpdateByHospital);
 router.post('/', controller.create);
 // router.put('/:id', controller.update);
 // router.patch('/:id', controller.update);

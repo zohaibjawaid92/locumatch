@@ -14,6 +14,7 @@ var DoctorContracts = new Schema({
     enddate : String,
     speciality : String,
     region : String,
+    status : String,
     payfrom : String,
     payto : String,
 });

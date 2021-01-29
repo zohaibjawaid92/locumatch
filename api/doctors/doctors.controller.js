@@ -13,16 +13,6 @@ exports.index = function(req, res) {
   });
 };
 
-// Get a single dashboard
-// exports.show = function(req, res) {
-//   Dashboard.findById(req.params.id, function (err, dashboard) {
-//     if(err) { return handleError(res, err); }
-//     if(!dashboard) { return res.status(404).send('Not Found'); }
-//     return res.json(dashboard);
-//   });
-// };
-
-
 exports.checkdoctoraccdetails = function(req , res , next) {
   console.log(req.params.id);
   account_settings.find({userId : req.params.id}, function(err , result){
@@ -65,11 +55,43 @@ exports.getallcontracts = function(req, res) {
 
 // Create Doctor Contract
 exports.createdoctorcontract = function(req, res) {
-  console.log(req.body);
   DoctorContracts.create(req.body, function(err, doctrosData) {
     if(err) { return handleError(res, err); }
     return res.status(201).json(doctrosData);
   });
+};
+
+
+// Approved Doctor Contract By Hospital
+// Updates an existing dashboard in the DB.
+exports.doctorContractUpdateByHospital = function(req, res) {
+  DoctorContracts.findById(req.params.id, function(err, product) {
+    console.log('gettinf data' , product);
+    if (!product)
+      res.status(404).send("Record not found");
+    else {
+      product.status = req.body.status;
+
+      product.save().then(product => {
+          res.json('Update complete');
+      })
+      .catch(err => {
+            res.status(400).send("unable to update the database");
+      });
+    }
+  });
+
+
+  // if(req.body._id) { delete req.body._id; }
+  // DoctorContracts.findById(req.params.id, function (err, dashboard) {
+  //   if (err) { return handleError(res, err); }
+  //   if(!dashboard) { return res.status(404).send('Not Found'); }
+  //   var updated = _.extend(dashboard, req.body);
+  //   updated.save(function (err) {
+  //     if (err) { return handleError(res, err); }
+  //     return res.status(200).json(dashboard);
+  //   });
+  // });
 };
 
 // Creates a new dashboard in the DB.
